@@ -1,0 +1,2 @@
+# ecommerce-accesible
+no
