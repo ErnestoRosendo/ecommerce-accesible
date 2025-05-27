@@ -153,13 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="product-info">
                     <div class="product-category">${product.cantidad} disponibles</div>
-                    <h3 class="product-title">${product.producto}</h3>
+                    <h3 class="product-title" id="h3${product.id}">${product.producto}</h3>
                     <p class="product-description">${product.descripcion}</p>
                     <div class="product-footer">
                         <div class="product-price">$${product.precio.toFixed(2)}</div>
                         <div class="product-actions">
-                            <button class="product-btn" aria-label="favorito"><i class="far fa-heart"></i></button>
-                            <button class="product-btn add-to-cart" data-id="${product.id}" aria-label="carrito"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="product-btn" id="btnfav${product.id}" aria-label="agregar favorito" aria-labelledby="btnfav${product.id} h3${product.id}"><i class="far fa-heart"></i></button>
+                            <button class="product-btn add-to-cart" id="btn${product.id}" data-id="${product.id}" aria-labelledby="btn${product.id} h3${product.id}" aria-label="agregar carrito"><i class="fas fa-shopping-cart"></i></button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         setupCartButtons();
+
+        const btn = document.getElementById("btn1");
+            const live_region = document.getElementById("live-region");
+
+        btn.addEventListener("click", function () {
+        live_region.innerHTML += `<p>Artículo añadido </p>`;
+});
     }
+
+
+
 
     function setupCartButtons() {
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -282,3 +292,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     renderProducts();
 });
+
